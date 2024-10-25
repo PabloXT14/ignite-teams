@@ -1,5 +1,5 @@
+import { Groups } from '@/screens/Groups'
 import { StatusBar } from 'expo-status-bar'
-import { Groups } from './src/screens/Groups'
 
 export default function App() {
   return (
