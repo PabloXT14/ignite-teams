@@ -6,13 +6,10 @@ import { Highlight } from '@/components/Highlight'
 import { GroupCard } from '@/components/GroupCard'
 
 import { Container } from './styles'
+import { ListEmpty } from '@/components/ListEmpty'
 
 export function Groups() {
-  const [groups, setGroups] = useState<string[]>([
-    'Galera da Rocketseat',
-    'Galera do Ignite',
-    'Galera da Curso',
-  ])
+  const [groups, setGroups] = useState<string[]>([])
 
   return (
     <Container>
@@ -24,8 +21,11 @@ export function Groups() {
         data={groups}
         keyExtractor={item => item}
         renderItem={({ item }) => <GroupCard title={item} />}
-        contentContainerStyle={{ gap: 12 }}
+        contentContainerStyle={groups.length === 0 ? { flex: 1 } : { gap: 12 }}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <ListEmpty message="Que tal cadastrar a primeira turma?" />
+        )}
       />
     </Container>
   )
