@@ -5,3 +5,13 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.gray[600]};
   padding: 24px;
 `
+
+export const Form = styled.View`
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.gray[700]};
+
+  flex-direction: row;
+  justify-content: center;
+
+  border-radius: 6px; 
+`
