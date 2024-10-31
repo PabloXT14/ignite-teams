@@ -1,4 +1,4 @@
-import styled from 'styled-components/native'
+import styled, { css } from 'styled-components/native'
 
 export const Container = styled.View`
   width: 100%;
@@ -8,15 +8,19 @@ export const Container = styled.View`
 export const Title = styled.Text`
   text-align: center;
 
-  font-size: ${({ theme }) => theme.fontSize.xl}px;
-  font-family: ${({ theme }) => theme.fontFamily.bold};
-  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => css`
+    font-size: ${theme.fontSize.xl}px;
+    font-family: ${theme.fontFamily.bold};
+    color: ${theme.colors.white};
+  `}
 `
 
 export const Subtitle = styled.Text`
   text-align: center;
 
-  font-size: ${({ theme }) => theme.fontSize.md}px;
-  font-family: ${({ theme }) => theme.fontFamily.regular};
-  color: ${({ theme }) => theme.colors.gray[300]};
+  ${({ theme }) => css`
+    font-size: ${theme.fontSize.md}px;
+    font-family: ${theme.fontFamily.regular};
+    color: ${theme.colors.gray[300]};
+  `}
 `
