@@ -2,7 +2,7 @@ import { Header } from '@/components/Header'
 import { Highlight } from '@/components/Highlight'
 
 import { Container } from './styles'
-import { Input } from '@/components/Input'
+import { ButtonIcon } from '@/components/ButtonIcon'
 
 export function Players() {
   return (
@@ -14,7 +14,7 @@ export function Players() {
         subtitle="Adicione a galera e separe os times"
       />
 
-      <Input placeholder="Nome do participante" />
+      <ButtonIcon />
     </Container>
   )
 }
