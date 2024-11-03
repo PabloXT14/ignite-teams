@@ -8,7 +8,7 @@ import {
 
 import { defaultTheme } from '@/theme'
 import { Loading } from '@/components/Loading'
-import { Players } from '@/screens/Players'
+import { Routes } from '@/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,7 +19,7 @@ export default function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <StatusBar style="light" backgroundColor="transparent" translucent />
-      {fontsLoaded ? <Players /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   )
 }
