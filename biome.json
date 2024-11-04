@@ -23,12 +23,13 @@
       "recommended": true,
       "style": {
         "noNonNullAssertion": "off"
+      },
+      "complexity": {
+        "noUselessCatch": "off"
       }
     }
   },
   "files": {
-    "ignore": [
-      "node_modules"
-    ]
+    "ignore": ["node_modules"]
   }
 }
