@@ -6,6 +6,8 @@ import { Highlight } from '@/components/Highlight'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 
+import { groupCreate } from '@/storage/group/group-create'
+
 import { Container, Content, Icon } from './styles'
 
 export function NewGroup() {
@@ -13,8 +15,15 @@ export function NewGroup() {
 
   const navigation = useNavigation()
 
-  function handleNewGroup() {
-    navigation.navigate('players', { group })
+  async function handleNewGroup() {
+    if (group.trim().length === 0) return
+
+    try {
+      await groupCreate(group)
+      navigation.navigate('players', { group })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
