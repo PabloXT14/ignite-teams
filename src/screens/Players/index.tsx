@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Alert, FlatList } from 'react-native'
 import { useRoute } from '@react-navigation/native'
 
@@ -46,6 +46,7 @@ export function Players() {
     try {
       await playerAddByGroup(newPlayer, group)
       setNewPlayerName('')
+      fetchPlayersByTeam()
     } catch (error) {
       console.log(error)
 
@@ -69,6 +70,10 @@ export function Players() {
       )
     }
   }
+
+  useEffect(() => {
+    fetchPlayersByTeam()
+  }, [team])
 
   return (
     <Container>
