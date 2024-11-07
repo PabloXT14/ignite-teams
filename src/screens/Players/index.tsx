@@ -14,6 +14,8 @@ import { ListEmpty } from '@/components/ListEmpty'
 import { Button } from '@/components/Button'
 import { playerAddByGroup } from '@/storage/player/player-add-by-group'
 import { AppError } from '@/utils/AppError'
+import type { PlayerStorageDTO } from '@/storage/player/player-storage-dto'
+import { playersGetByGroupAndTeam } from '@/storage/player/players-get-by-group-and-team'
 
 type RouteParams = {
   group: string
@@ -22,7 +24,7 @@ type RouteParams = {
 export function Players() {
   const [newPlayerName, setNewPlayerName] = useState('')
   const [team, setTeam] = useState('Time A')
-  const [players, setPlayers] = useState<string[]>([])
+  const [players, setPlayers] = useState<PlayerStorageDTO[]>([])
 
   const route = useRoute()
 
@@ -52,6 +54,19 @@ export function Players() {
       } else {
         Alert.alert('Nova pessoa', 'Não foi possível adicionar.')
       }
+    }
+  }
+
+  async function fetchPlayersByTeam() {
+    try {
+      const playersByTeam = await playersGetByGroupAndTeam(group, team)
+      setPlayers(playersByTeam)
+    } catch (error) {
+      console.log(error)
+      Alert.alert(
+        'Pessoas',
+        'Nao foi possível carregar as pessoas do time selecionado.'
+      )
     }
   }
 
@@ -91,9 +106,9 @@ export function Players() {
 
       <FlatList
         data={players}
-        keyExtractor={item => item}
+        keyExtractor={item => item.name}
         renderItem={({ item }) => (
-          <PlayerCard name={item} onRemove={() => {}} />
+          <PlayerCard name={item.name} onRemove={() => {}} />
         )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[
