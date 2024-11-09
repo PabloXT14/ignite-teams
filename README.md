@@ -4,8 +4,6 @@
     title="Ignite Teams"
     alt="Ignite Teams"
   />
-  &nbsp;
-  Ignite Teams
 </h1>
 
 <p align="center">
